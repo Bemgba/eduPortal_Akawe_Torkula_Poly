@@ -1,0 +1,6 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<footer class="footer px-4">
+    <div><a href="https://bdic.ng/">Copyright</a> &nbsp; <a href="https://bdic.ng/">EULA</a> © 2026 Akawe Torkula Poly, Mkd.</div>
+    <div class="ms-auto">Powered by&nbsp;<a href="https://bdic.ng/">BDIC</a></div>
+</footer>

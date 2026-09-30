@@ -1,0 +1,69 @@
+<!DOCTYPE html><!--
+* CoreUI PRO Bootstrap Admin Template
+* @version v5.2.0
+* @link https://coreui.io/product/bootstrap-dashboard-template/
+* Copyright (c) 2023 creativeLabs Łukasz Holeczek
+* License (https://coreui.io/pro/license/)
+-->
+<html lang="en">
+  <head>
+    <base href="./../">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,SCSS,HTML,RWD,Dashboard">
+    <title>CoreUI Bootstrap Admin Template</title>
+    
+    <link rel="stylesheet" href="vendors/simplebar/css/simplebar.css">
+    <!-- Main styles for this application-->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- We use those styles to show code examples, you should remove them in your application.-->
+    <link href="css/examples.css" rel="stylesheet">
+    <script src="js/config.js"></script>
+    <script src="js/color-modes.js"></script>
+    <link rel="canonical" href="https://coreui.io/docs/components/popovers/">
+  </head>
+  <body>
+  
+                        <button class="btn btn-lg btn-danger" type="button" data-coreui-toggle="popover" title="" data-coreui-content="And here's some amazing content. It's very engaging. Right?" data-coreui-original-title="Popover title">Click to toggle popover</button>
+
+                       <button class="btn btn-sm btn-warning float-end" type="button" 
+                                    data-coreui-toggle="popover" 
+                                    data-coreui-placement="bottom" 
+                                    data-coreui-content="<strong style='color: red;'>Application Status:</strong> <br><em>This is a fully formatted content block with <u>HTML styling</u>.</em>" 
+                                    data-coreui-original-title="Session Statuses">
+                                Click to view Application Status
+                            </button>
+
+                            
+
+  
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui-pro/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script src="vendors/i18next/js/i18next.min.js"></script>
+    <script src="vendors/i18next-http-backend/js/i18nextHttpBackend.js"></script>
+    <script src="vendors/i18next-browser-languagedetector/js/i18nextBrowserLanguageDetector.js"></script>
+    <script src="js/i18next.js"></script>
+  
+    <!-- Plugins and scripts required by this view-->
+    <script src="js/popovers.js"></script>
+
+    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+    const popoverTrigger = document.querySelector('[data-coreui-toggle="popover"]');
+    if (popoverTrigger) {
+        new coreui.Popover(popoverTrigger, {
+            html: true, // Enable HTML content if needed
+            placement: 'bottom' // Set placement if not default
+        });
+    }
+});
+                            </script>
+    <script>
+    </script>
+
+  </body>
+</html>

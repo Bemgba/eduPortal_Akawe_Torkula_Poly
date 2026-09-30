@@ -1,0 +1,201 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.nio.file.Files"%>
+<%@page import="java.io.File"%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    Applicantsbiodata std = sess.getApplicantsbiodataById(user.getId());
+    
+    System.out.println("DEBUG: Processing page request for user: " + user.getId());
+    System.out.println("DEBUG: Page name: " + pagename);
+    System.out.println("DEBUG: Existing biodata for user " + user.getId() + ": " + (std != null ? "Found" : "Not found"));
+    
+    // For remedial applications, create biodata automatically if it doesn't exist
+    if (std == null && pagename.equalsIgnoreCase("remedial_form.jsp")) {
+        try {
+            System.out.println("DEBUG: Creating biodata for remedial applicant: " + user.getId());
+            
+            // Create basic biodata from user information
+            std = new Applicantsbiodata();
+            std.setId(user.getId());
+            std.setSurname(user.getUsername()); // Temporary - will be updated by user
+            std.setOthernames("User"); // Default value
+            std.setGender("Male"); // Default value - will be updated by user
+            std.setPhoneno(""); // Will be filled by user
+            std.setContactAddress(""); // Will be filled by user
+            std.setHomeTown(""); // Will be filled by user
+            
+            // Set default country (Nigeria)
+            try {
+                Countries defaultCountry = sess.getCountries("NG"); // Nigeria
+                if (defaultCountry != null) {
+                    std.setNationality(defaultCountry);
+                    System.out.println("DEBUG: Set default country: " + defaultCountry.getName());
+                } else {
+                    System.out.println("DEBUG: Warning - Could not find Nigeria country record");
+                }
+            } catch (Exception ce) {
+                System.out.println("DEBUG: Error setting default country: " + ce.getMessage());
+            }
+            
+            // Set default state and LGA (you can customize these)
+            try {
+                // You might want to set a default state here
+                // For now, we'll leave them null and handle in the form
+                System.out.println("DEBUG: Skipping default state/LGA setup");
+            } catch (Exception se) {
+                System.out.println("DEBUG: Error setting default state: " + se.getMessage());
+            }
+            
+            sess.newEntry(std);
+            System.out.println("DEBUG: Successfully created biodata for remedial applicant: " + user.getId());
+        } catch (Exception e) {
+            System.out.println("DEBUG: Error creating biodata for remedial applicant: " + e.getMessage());
+            e.printStackTrace();
+            std = null; // Ensure std is null if creation failed
+        }
+    }
+    
+    System.out.println("DEBUG: Final std object for user " + user.getId() + ": " + (std != null ? "Available" : "Null"));
+    
+    // FIXED: Allow new users to access dashboard and profile update without redirect
+    // Only redirect if user is trying to access restricted pages that require biodata
+    // Dashboard and profile update should always be accessible for new users to complete their setup
+    if (std == null && !pagename.equalsIgnoreCase("genappDashboard.jsp") && !pagename.equalsIgnoreCase("remedial_form.jsp") && !pagename.equalsIgnoreCase("applicantProfileUpdate.jsp") && !pagename.equalsIgnoreCase("appMain1.jsp") && !pagename.equalsIgnoreCase("logout.jsp")) {
+        System.out.println("DEBUG: User " + user.getId() + " has no biodata but trying to access restricted page: " + pagename);
+        // Instead of redirecting to login, redirect to profile update page where they can complete their biodata
+        response.sendRedirect("/profile_update");
+        return;
+    }
+%>
+<div class="container-fluid px-4 border-bottom">
+    <button class="header-toggler" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()" style="margin-inline-start: -14px">
+        <svg class="icon icon-lg">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+        </svg>
+    </button>
+    <div><h1><%=settings.fullName%></h1></div>
+    <%
+        List<News> list5 = new ArrayList();
+    %>
+    <ul class="header-nav d-none d-md-flex ms-auto">
+        <li class="nav-item dropdown"><a class="nav-link" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <svg class="icon icon-lg my-1 mx-2">
+                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
+                </svg><span class="badge rounded-pill position-absolute top-0 end-0 bg-danger-gradient"><%=list5.size()%></span></a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg pt-0">
+                <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2" data-coreui-i18n="notificationsCounter, { 'counter': 5 }">You have <%=list5.size()%> latest news</div>
+
+
+                <%
+
+                    for (News newd : list5) {
+                        String idx = settings.encodeUrl(settings.encryptText(newd.getId()));
+                        String xtit = newd.getTitle();
+                        if (xtit.length() > 40) {
+                            xtit = xtit.substring(0, 37) + "...";
+                        }
+                %>                        
+                <a target="_blank" class="dropdown-item" href="/d_news?id=<%=idx%>">
+                    <span data-coreui-i18n="serverOverloaded"><%=xtit%></span></a>
+                    <%
+                        }
+                    %>
+
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-center fw-semibold" href="#" data-coreui-i18n="viewAllMessages">View all Notifications</a>
+            </div>
+        </li>
+
+    </ul>
+    <ul class="header-nav ms-auto ms-md-0">
+        <li class="nav-item py-1">
+            <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <button class="btn btn-link nav-link" type="button" aria-expanded="false" data-coreui-toggle="dropdown">
+                <svg class="icon icon-lg theme-icon-active">
+                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-contrast"></use>
+                </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" style="--cui-dropdown-min-width: 8rem;">
+                <li>
+                    <button class="dropdown-item d-flex align-items-center" type="button" data-coreui-theme-value="light">
+                        <svg class="icon icon-lg me-3">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-sun"></use>
+                        </svg><span data-coreui-i18n="light">Light</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-item d-flex align-items-center" type="button" data-coreui-theme-value="dark">
+                        <svg class="icon icon-lg me-3">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-moon"></use>
+                        </svg><span data-coreui-i18n="dark"> Dark</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-item d-flex align-items-center active" type="button" data-coreui-theme-value="auto">
+                        <svg class="icon icon-lg me-3">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-contrast"></use>
+                        </svg>Auto
+                    </button>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item py-1">
+            <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
+        </li>
+        <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-md">
+                     <%
+                                            String imgurla = "assets/img/noperson.png";
+                                            try {
+                                                if (std != null) {
+                                                    Passports pp = sess.getPassports(std.getId());
+                                                    if (pp != null) {
+                                                        File imageFile = new File(settings.documentroot+"/"+pp.getUrl());
+                                                        byte[] imageBytes = Files.readAllBytes(imageFile.toPath());
+
+                                                        // Encode the byte array to a Base64 string
+                                                        imgurla = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(imageBytes);
+
+                                                        // Create the HTML <img> tag
+                                                    }
+                                                }
+                                            } catch (Exception hc) {
+                                            }
+                                        %>
+                                        
+                    <img class="avatar-img" src="<%=imgurla%>" alt=""></div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end pt-0">
+                <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2" data-coreui-i18n="account">Account</div>
+                <a class="dropdown-item" href="#"><span data-coreui-i18n="updates"><%=std != null ? std.getSurname() + " " + std.getOthernames() : ""%></span></a>
+                <a class="dropdown-item" href="#"><span data-coreui-i18n="messages"><%=std != null ? std.getId() : ""%></span></a>
+                <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold my-2" data-coreui-i18n="settings">Settings</div>
+                <a class="dropdown-item" href="#">
+                    <svg class="icon me-2">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg><span data-coreui-i18n="profile">Profile</span></a>
+                <a class="dropdown-item" href="#">
+                    <svg class="icon me-2">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                    </svg><span data-coreui-i18n="settings">Settings</span></a>
+                <a class="dropdown-item" href="#">
+                    <svg class="icon me-2">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-credit-card"></use>
+                    </svg><span data-coreui-i18n="payments">Payments</span></a>
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="/log_out">
+                    <svg class="icon me-2">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                    </svg><span data-coreui-i18n="logout">Logout</span></a>
+            </div>
+        </li>
+    </ul>
+
+</div>

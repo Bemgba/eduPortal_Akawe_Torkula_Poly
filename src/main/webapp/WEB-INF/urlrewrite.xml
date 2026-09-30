@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 5.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite5.0.dtd">
+<!--
+    Configuration file for UrlRewriteFilter
+    http://www.tuckey.org/urlrewrite/
+-->
+<urlrewrite>
+    <!--
+    This will be deleted    
+    -->
+   
+    <!-- 
+    End of the urls to be deleted
+    -->
+    <rule>
+        <from>/adminssion_view</from>
+        <to>/adminadmissionview.jsp</to>
+    </rule>
+    <rule>
+        <from>/applications_view</from>
+        <to>/adminapplicationsview.jsp</to>
+    </rule>
+    <rule>
+        <from>/recover</from>
+        <to>/passwordrecovery.jsp</to>
+    </rule>
+    <rule>
+        <from>/passwordreset</from>
+        <to>/reset-password.jsp</to>
+    </rule>
+    <rule>
+        <from>/waive_fees</from>
+        <to>/adminschoolfeeswaiver.jsp</to>
+    </rule>
+    <rule>
+        <from>/job_vacancies</from>
+        <to>/vacancies.jsp</to>
+    </rule>
+    <rule>
+        <from>/search_applicants</from>
+        <to>/adminsearchapp.jsp</to>
+    </rule>
+    <rule>
+        <from>/search_students</from>
+        <to>/adminsearchstudent.jsp</to>
+    </rule>
+    <rule>
+        <from>/manual_allocation</from>
+        <to>/adminroomallocationmanual.jsp</to>
+    </rule>
+    <rule>
+        <from>/activate_payment</from>
+        <to>/adminactivatepayment.jsp</to>
+    </rule>
+    <rule>
+        <from>/edit_stidents</from>
+        <to>/admineditstudent.jsp</to>
+    </rule>
+    <rule>
+        <from>/changepw</from>
+        <to>/passwordchange.jsp</to>
+    </rule>
+    <rule>
+        <from>/std_activate</from>
+        <to>/adminactivatestudentaccount.jsp</to>
+    </rule>
+    <rule>
+        <from>/new_staff</from>
+        <to>/adminAddStaff.jsp</to>
+    </rule>
+    <rule>
+        <from>/staff_update</from>
+        <to>/updateStaff.jsp</to>
+    </rule>
+    <rule>
+        <from>/session_change</from>
+        <to>/changeofsession.jsp</to>
+    </rule>
+    <rule>
+        <from>/view_hostel_alloc</from>
+        <to>/adminviewhostelallocations.jsp</to>
+    </rule>
+    <rule>
+        <from>/view_hostel_app</from>
+        <to>/adminviewhostelapplications.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/adminssionPG_view</from>
+        <to>/adminadmissionviewPG.jsp</to>
+    </rule>
+    <rule>
+        <from>/adminssion_list</from>
+        <to>/adminadmissionlist.jsp</to>
+    </rule>
+    <rule>
+        <from>/adminssionPG_list</from>
+        <to>/adminadmissionlistPG.jsp</to>
+    </rule>
+    <rule>
+        <from>/summer_app1</from>
+        <to>/stdsummerapp1.jsp</to>
+    </rule>
+    <rule>
+        <from>/std_summer_app</from>
+        <to>/stdsummerschoolapplications.jsp</to>
+    </rule>
+    <rule>
+        <from>/adm_deferment_p2</from>
+        <to>/admindefermentapproval.jsp</to>
+    </rule>
+    <rule>
+        <from>/std_deferment_p1</from>
+        <to>/stddefermentapplication.jsp</to>
+    </rule>
+    <rule>
+        <from>/change_course_pg</from>
+        <to>/adminchangecoursepgapplication.jsp</to>
+    </rule>
+    <rule>
+        <from>/reset_pgapplicant</from>
+        <to>/adminresetpgapplication.jsp</to>
+    </rule>
+    <rule>
+        <from>/admin_utme_list</from>
+        <to>/adminViewUtme.jsp</to>
+    </rule>
+    <rule>
+        <from>/perfor_det</from>
+        <to>/adminfeesPerformance.jsp</to>
+    </rule>
+    <rule>
+        <from>/pp_adm_list5</from>
+        <to>/adminpaymentreport.jsp</to>
+    </rule>
+    <rule>
+        <from>/pp_app_list</from>
+        <to>/adminpgapplicationsList.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/pp_applicants</from>
+        <to>/adminpgapplications.jsp</to>
+    </rule>
+    <rule>
+        <from>/staff_settings</from>
+        <to>/userchangepassword.jsp</to>
+    </rule>
+    <rule>
+        <from>/update_email</from>
+        <to>/cpoupdateemail.jsp</to>
+    </rule>
+    <rule>
+        <from>/update_progression</from>
+        <to>/cpoupdatestudentprogression.jsp</to>
+    </rule>
+    <rule>
+        <from>/edit_semester_courses</from>
+        <to>admineditsemestercourses.jsp</to>
+    </rule>
+    <rule>
+        <from>/hostel_manager</from>
+        <to>/hostelmanager.jsp</to>
+    </rule>
+    <rule>
+        <from>/edit_hostel_manager</from>
+        <to>/edithostelmanager.jsp</to>
+    </rule>
+    <rule>
+        <from>/edit_hostel_rooms</from>
+        <to>/edithostelrooms.jsp</to>
+    </rule>
+    <rule>
+        <from>/hostel_app</from>
+        <to>/stdhostelapplications.jsp</to>
+    </rule>
+    <rule>
+        <from>/sem_reg_courses</from>
+        <to>/adminsemesterregcourses.jsp</to>
+    </rule>
+    <rule>
+        <from>/payment_reg_report</from>
+        <to>/adminpaymentregistrationreport.jsp</to>
+    </rule>
+    <rule>
+        <from>/gen_app_dashboard</from>
+        <to>/genappDashboard.jsp</to>
+    </rule>
+    <rule>
+        <from>/manage_sem_courses</from>
+        <to>/adminmanagesemcourses.jsp</to>
+    </rule>
+    <rule>
+        <from>/list_sem_courses</from>
+        <to>/adminListSemCourses.jsp</to>
+    </rule>
+    <rule>
+        <from>/admin_fees_details</from>
+        <to>/adminFeesSetupDetails.jsp</to>
+    </rule>
+    <rule>
+        <from>/fees_setup</from>
+        <to>/adminfeesSetup.jsp</to>
+    </rule>
+    <rule>
+        <from>/create_fees_group</from>
+        <to>/adminCreateFeesGroup.jsp</to>
+    </rule>
+    <rule>
+        <from>/create_fees_items</from>
+        <to>/adminCreateFeesitem.jsp</to>
+    </rule>
+    <rule>
+        <from>/credit_unit_controls</from>
+        <to>/adminCreditUnitControls.jsp</to>
+    </rule>
+    <rule>
+        <from>/course_management</from>
+        <to>/adminCourseManagement.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/utme_subjects</from>
+        <to>/adminUtmeSubjects.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin_change_role</from>
+        <to>/adminChangeStaffRole.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin_daily_collection</from>
+        <to>/adminpaymentdaily.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin_role_pages</from>
+        <to>/adminrolePages.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin_search_user</from>
+        <to>/adminsearchUser.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin_cpo_allocation</from>
+        <to>/adminAddCPOToCourse.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin_course_allocation</from>
+        <to>/adminLecturerCourseAllocation.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/admin_olevel_cleanup</from>
+        <to>/adminCleanupOlevel.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/application_pg1</from>
+        <to>/appPG1.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/clear_s001</from>
+        <to>/adminclearApplicantS001b.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/applicant_clearance</from>
+        <to>/adminclearApplicantS001.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/clear_pg</from>
+        <to>/adminclearApplicantS002b.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/applicant_pg_clearance</from>
+        <to>/adminclearApplicantS002.jsp</to>
+    </rule>
+    <rule>
+        <from>/application_sw1</from>
+        <to>/appSW1.jsp</to>
+    </rule>
+    <rule>
+        <from>/application_main1</from>
+        <to>/appMain1.jsp</to>
+    </rule>
+    <rule>
+        <from>/payment_summary2</from>
+        <to>/staffPaymentSummary2.jsp</to>
+    </rule>
+    <rule>
+        <from>/payment_summary3</from>
+        <to>/staffPaymentSummary3.jsp</to>
+    </rule>
+    <rule>
+        <from>/payment_summary4</from>
+        <to>/staffpaymentbycategory.jsp</to>
+    </rule>
+    <rule>
+        <from>/payment_summary</from>
+        <to>/staffPaymentSummary.jsp</to>
+    </rule>
+    <rule>
+        <from>/app_adm_upload</from>
+        <to>/admuploadutmeapplicants.jsp</to>
+    </rule>
+    <rule>
+        <from>/profile_update</from>
+        <to>/applicantProfileUpdate.jsp</to>
+    </rule>
+    <rule>
+        <from>/application_signup</from>
+        <to>/applicationsRegister.jsp</to>
+    </rule>
+    <rule>
+        <from>/application_home</from>
+        <to>/applications.jsp</to>
+    </rule>
+    <rule>
+        <from>/adm_temp_addedit</from>
+        <to>/admtemplateAddEdit.jsp</to>
+    </rule>
+    <rule>
+        <from>/app_adm_temp</from>
+        <to>/admtemplate.jsp</to>
+    </rule>
+    <rule>
+        <from>/app_adm_download_template</from>
+        <to>/admtemplateDownload.jsp</to>
+    </rule>
+    <rule>
+        <from>/app_de_adm_upload</from>
+        <to>/admuploaddeapplicants.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/std_dashboard</from>
+        <to>/studentdashboard.jsp</to>
+    </rule>
+    <rule>
+        <from>/app_dashboard</from>
+        <to>/applicantsdashboard.jsp</to>
+    </rule>
+    <rule>
+        <from>/view_payments</from>
+        <to>/adminpaymenthistory.jsp</to>
+    </rule>
+    <rule>
+        <from>/epayment</from>
+        <to>/website_epayment.jsp</to>
+    </rule>
+    <rule>
+        <from>/manual55-veriuufy</from>
+        <to>/manual-verification.jsp</to>
+    </rule>
+    <rule>
+        <from>/live-verify</from>
+        <to>/live-verification.jsp</to>
+    </rule>
+    <rule>
+        <from>/confirmation</from>
+        <!-- CREDO: was /paymentresponse.jsp - kept for revert reference -->
+        <!-- <to>/paymentresponse.jsp</to> -->
+        <to>/XCard?action=verify</to>
+    </rule>
+    <rule>
+        <from>/std_payment</from>
+        <to>/website_epayment_student.jsp</to>
+    </rule>
+    <rule>
+        <from>/private_payment</from>
+        <to>/student_private_payment.jsp</to>
+    </rule>
+    <rule>
+        <from>/app_payment</from>
+        <to>/website_epayment_applicants.jsp</to>
+    </rule>
+    <rule>
+        <from>/makeup_payment</from>
+        <to>/website_epayment_makeup.jsp</to>
+    </rule>
+    <rule>
+        <from>/invoice</from>
+        <to>/website_epayment_invoice.jsp</to>
+    </rule>
+    <rule>
+        <from>/resolve_payments</from>
+        <to>/adminResolvePayments.jsp</to>
+    </rule>
+    <rule>
+        <from>/my_reg</from>
+        <to>/stdmyregistration.jsp</to>
+    </rule>
+    <rule>
+        <from>/my_documents</from>
+        <to>/stddocuments.jsp</to>
+    </rule>
+   
+    <rule>
+        <from>/std_registration</from>
+        <to>/stdmyregdet.jsp</to>
+    </rule>
+    <rule>
+        <from>/payment_hist</from>
+        <to>/stdpaymenthistory.jsp</to>
+    </rule>
+    <rule>
+        <from>/d_news</from>
+        <to>/newsdetails.jsp</to>
+    </rule>
+    <rule>
+        <from>/sem_reg</from>
+        <to>/semesterregistration.jsp</to>
+    </rule>
+
+    <rule>
+        <from>/log_out</from>
+        <to>/logout.jsp</to>
+    </rule>
+    <rule>
+        <from>/notifypayment/([0-9]+)</from>
+        <to>/paymentResponse.jsp?id=$1</to>
+    </rule>
+    <rule>
+        <from>/news_details</from>
+        <to>/newsdetails.jsp</to>
+    </rule>
+    <rule>
+        <from>/app_part_time</from>
+        <to>/partime.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/app_tvet</from>
+        <to>/tvet.jsp</to>
+    </rule>
+    <rule>
+        <from>/stf_dashboard</from>
+        <to>/staffdashboard.jsp</to>
+    </rule>
+    <rule>
+        <!--Undergraduate application form for JAMBites.-->
+        <from>^/undergraduate_app$</from>
+        <to last="true">/undergraduate_application.jsp</to>
+    </rule>
+    <!--Undergraduate application form for REMs.-->
+    <rule>
+        <from>/remedialApplication</from>
+        <to>/remedial_form.jsp</to>
+    </rule>
+    <rule>
+        <from>/cpaymentError</from>
+        <to>/paymentError.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/remedialApplication2</from>
+        <to>/OlevelResultServlet</to>
+    </rule>
+    <outbound-rule>
+        <note>
+            The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
+            the url /rewrite-status will be rewritten to /test/status/.
+
+            The above rule and this outbound-rule means that end users should never see the
+            url /rewrite-status only /test/status/ both in thier location bar and in hyperlinks
+            in your pages.
+        </note>
+        <from>/rewrite-status</from>
+        <to>/test/status/</to>
+    </outbound-rule>
+
+    <rule>
+        <from>/view_personal_details</from>
+        <to>/viewPersonalDetails.jsp</to>
+    </rule>
+    
+    <rule>
+        <from>/olevelResults</from>
+        <to>/remedial_form2.jsp</to>
+    </rule>
+
+    <!--
+
+    INSTALLATION
+
+        in your web.xml add...
+
+        <filter>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+            <init-param>
+                <param-name>logLevel</param-name>
+                <param-value>WARN</param-value>
+            </init-param>
+        </filter>
+        <filter-mapping>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+     EXAMPLES
+
+     Redirect one url
+        <rule>
+            <from>/some/old/page.html</from>
+            <to type="redirect">/very/new/page.html</to>
+        </rule>
+
+    Redirect a directory
+        <rule>
+            <from>/some/olddir/(.*)</from>
+            <to type="redirect">/very/newdir/$1</to>
+        </rule>
+
+    Clean a url
+        <rule>
+            <from>/products/([0-9]+)</from>
+            <to>/products/index.jsp?product_id=$1</to>
+        </rule>
+    eg, /products/1234 will be passed on to /products/index.jsp?product_id=1234 without the user noticing.
+
+    Browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <from>/some/page.html</from>
+            <to>/some/page-for-old-browsers.html</to>
+        </rule>
+    eg, will pass the request for /some/page.html on to /some/page-for-old-browsers.html only for older
+    browsers whose user agent strings match Mozilla/1, Mozilla/2, Mozilla/3 or Mozilla/4.
+
+    Centralised browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <set type="request" name="browser">moz</set>
+        </rule>
+    eg, all requests will be checked against the condition and if matched
+    request.setAttribute("browser", "moz") will be called.
+
+    -->
+
+</urlrewrite>

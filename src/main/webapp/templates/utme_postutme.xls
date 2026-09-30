@@ -1,0 +1,31 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+</head>
+<body>
+<table border=1>
+<tr>
+<td><b>S/NO</b></td>
+<td><b>JAMB_NO</b></td>
+<td><b>SCORE</b></td>
+</tr>
+<tr>
+<td>1</td>
+<td>202440202794ef</td>
+<td>85</td>
+</tr>
+<tr>
+<td>2</td>
+<td>202440202795gh</td>
+<td>78</td>
+</tr>
+<tr>
+<td>3</td>
+<td>202440202796ij</td>
+<td>92</td>
+</tr>
+</table>
+</body>
+</html>

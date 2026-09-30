@@ -1,0 +1,61 @@
+<%@page import="com.mnl.eduportal.entities.*"%>
+<%@page import="com.mnl.eduportal.util.*"%>
+<%@page import="com.mnl.eduportal.sessions.*"%>
+<%@page import="jakarta.inject.Inject"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="java.util.Collection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList, java.util.Iterator, java.util.List" %>
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<%!   java.text.NumberFormat formatno = new java.text.DecimalFormat("###,###,###,###,###,###,###,###.00");
+
+    MainSession sess;
+    ReportsSession reportsess;
+
+    Settings settings = new Settings();
+
+    public void jspInit() {
+        try {
+            InitialContext ic = new InitialContext();
+            sess = (MainSession) ic.lookup("java:app/EduPortal-1.0-SNAPSHOT/MainSession");
+        } catch (Exception e) {
+        }
+
+        try {
+            InitialContext ic = new InitialContext();
+            reportsess = (ReportsSession) ic.lookup("java:app/EduPortal-1.0-SNAPSHOT/ReportsSession");
+        } catch (Exception e) {
+        }
+
+    }
+
+    public void jspDestroy() {
+        sess = null;
+        reportsess = null;
+
+    }
+
+%>
+
+
+<%
+
+    Users user = (Users) session.getAttribute("USER");
+    String menu = "";
+    String pages = "";
+    String xmenu = (String) session.getAttribute("MENU");
+    String xpages = (String) session.getAttribute("PAGES");
+    if (user != null && xpages != null && xmenu != null) {
+        pages = xpages;
+        menu = xmenu;
+    }
+
+    String fullpath = request.getRequestURI();
+    String pagename = fullpath.substring(fullpath.lastIndexOf("/") + 1, fullpath.length());
+
+%>
+

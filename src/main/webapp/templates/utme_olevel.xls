@@ -1,0 +1,65 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+</head>
+<body>
+<table border=1>
+<tr>
+<td><b>JAMB_NO</b></td>
+<td><b>SUBJECT</b></td>
+<td><b>GRADE</b></td>
+<td><b>SERIES</b></td>
+<td><b>EXAM_YEAR</b></td>
+<td><b>EXAM_TYPE</b></td>
+<td><b>EXAM_NUMBER</b></td>
+</tr>
+<tr>
+<td>202440202794ef</td>
+<td>MATHEMATICS</td>
+<td>B3</td>
+<td>MAY/JUNE</td>
+<td>2023</td>
+<td>WAEC</td>
+<td>2345678901</td>
+</tr>
+<tr>
+<td>202440202794ef</td>
+<td>ENGLISH LANGUAGE</td>
+<td>C4</td>
+<td>MAY/JUNE</td>
+<td>2023</td>
+<td>WAEC</td>
+<td>2345678901</td>
+</tr>
+<tr>
+<td>202440202794ef</td>
+<td>PHYSICS</td>
+<td>B2</td>
+<td>MAY/JUNE</td>
+<td>2023</td>
+<td>WAEC</td>
+<td>2345678901</td>
+</tr>
+<tr>
+<td>202440202794ef</td>
+<td>CHEMISTRY</td>
+<td>C5</td>
+<td>MAY/JUNE</td>
+<td>2023</td>
+<td>WAEC</td>
+<td>2345678901</td>
+</tr>
+<tr>
+<td>202440202794ef</td>
+<td>BIOLOGY</td>
+<td>B3</td>
+<td>MAY/JUNE</td>
+<td>2023</td>
+<td>WAEC</td>
+<td>2345678901</td>
+</tr>
+</table>
+</body>
+</html>

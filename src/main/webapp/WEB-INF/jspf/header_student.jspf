@@ -1,0 +1,160 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="java.nio.file.Files"%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.io.File"%>
+<%@page import="com.mnl.eduportal.entities.Passports"%>
+<%@page import="java.util.Optional"%>
+<%@page import="java.util.Collection"%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    Students std = sess.getStudentsById(user.getId());
+    if (std == null) {
+        response.sendRedirect("/");
+    }
+
+    Sessionmanager sessman = sess.getCurrentSessionManagerBySchoolAndOperation(std.getCourseId().getSchoolProgrammeId().getSchoolId().getId(), "REGISTRATION");
+    if (sessman == null) {
+        response.sendRedirect("/");
+    }
+
+    Collection<Studentprogression> prograssion = std.getStudentprogressionCollection();
+    Studentprogression reg = null;
+    try {
+        Optional<Studentprogression> rego = prograssion.stream()
+                .filter(person -> person.getSessionAdded().equals(sessman.getName())
+                && person.getSemesterAdded().equals(sessman.getSemester()))
+                .findFirst();
+        reg = rego.get();
+    } catch (Exception k) {
+    }
+%>
+<div class="container-fluid px-4 border-bottom">
+    <button class="header-toggler" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()" style="margin-inline-start: -14px">
+        <svg class="icon icon-lg">
+        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+        </svg>
+    </button>
+    <div><h1><%=settings.fullName%></h1></div>
+    <%
+        List<News> list5 = sess.getTop5();
+    %>
+    <ul class="header-nav d-none d-md-flex ms-auto">
+        <li class="nav-item dropdown"><a class="nav-link" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+               
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg pt-0">
+                <!--<div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2" data-coreui-i18n="notificationsCounter, { 'counter': 5 }">You have < %=list5.size()%> latest news</div>-->
+
+
+                <%
+
+                    for (News newd : list5) {
+                        String idx = settings.encodeUrl(settings.encryptText(newd.getId()));
+                        String xtit = newd.getTitle();
+                        if (xtit.length() > 40) {
+                            xtit = xtit.substring(0, 37) + "...";
+                        }
+                %>                        
+                <a target="_blank" class="dropdown-item" href="/d_news?id=<%=idx%>">
+                    <span data-coreui-i18n="serverOverloaded"><%=xtit%></span></a>
+                    <%
+                        }
+                    %>
+
+
+                    <div class="dropdown-divider">
+                        
+                    </div>
+                <!--<a class="dropdown-item text-center fw-semibold" href="#" data-coreui-i18n="viewAllMessages">View all Notifications</a>-->
+            </div>
+        </li>
+
+    </ul>
+    <ul class="header-nav ms-auto ms-md-0">
+        <li class="nav-item py-1">
+            <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <button class="btn btn-link nav-link" type="button" aria-expanded="false" data-coreui-toggle="dropdown">
+                <svg class="icon icon-lg theme-icon-active">
+                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-contrast"></use>
+                </svg>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" style="--cui-dropdown-min-width: 8rem;">
+                <li>
+                    <button class="dropdown-item d-flex align-items-center" type="button" data-coreui-theme-value="light">
+                        <svg class="icon icon-lg me-3">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-sun"></use>
+                        </svg><span data-coreui-i18n="light">Light</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-item d-flex align-items-center" type="button" data-coreui-theme-value="dark">
+                        <svg class="icon icon-lg me-3">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-moon"></use>
+                        </svg><span data-coreui-i18n="dark"> Dark</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-item d-flex align-items-center active" type="button" data-coreui-theme-value="auto">
+                        <svg class="icon icon-lg me-3">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-contrast"></use>
+                        </svg>Auto
+                    </button>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item py-1">
+            <div class="vr h-100 mx-2 text-body text-opacity-75"></div>
+        </li>
+        <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="avatar avatar-md">
+                 <%
+                                            String imgurla = "assets/img/noperson.png";
+                                            try {
+                                                Passports pp = sess.getPassports(user.getId());
+                                                if (pp != null) {
+                                                    File imageFile = new File(settings.documentroot+"/"+pp.getUrl());
+                                                    byte[] imageBytes = Files.readAllBytes(imageFile.toPath());
+
+                                                    // Encode the byte array to a Base64 string
+                                                    imgurla = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(imageBytes);
+
+                                                    // Create the HTML <img> tag
+                                                }
+
+                                            } catch (Exception hc) {
+                                            }
+                                        %>
+                                        
+                    <img class="avatar-img" src="<%=imgurla%>" alt="">
+                </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end pt-0">
+                <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top mb-2" data-coreui-i18n="account">Account</div>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault();"><span data-coreui-i18n="updates"><%=std.getSurname() + " " + std.getOthernames()%></span></a>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault();"><span data-coreui-i18n="messages"><%=std.getMatricNo() == null ? std.getRegistrationNo() : std.getMatricNo()%></span></a>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault();"><span data-coreui-i18n="tasks"><%=std.getCourseId().getName()%></span></a>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault();"><span data-coreui-i18n="comments"><%=std.getCurrentClass()%></span></a>
+                <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold my-2" data-coreui-i18n="settings">Settings</div>
+<!--                <a class="dropdown-item" href="#" >
+                    <svg class="icon me-2">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg><span data-coreui-i18n="profile">Profile</span></a>
+                <a class="dropdown-item" href="#">
+                    <svg class="icon me-2">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
+                    </svg><span data-coreui-i18n="settings">Settings</span></a>-->
+                
+
+                <div class="dropdown-divider"></div>
+
+                <a class="dropdown-item" href="/log_out">
+                    <svg class="icon me-2">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                    </svg><span data-coreui-i18n="logout">Logout</span></a>
+            </div>
+        </li>
+    </ul>
+
+</div>

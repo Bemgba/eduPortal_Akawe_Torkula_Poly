@@ -1,0 +1,59 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+</head>
+<body>
+<table border=1>
+<tr>
+<td><b>JAMB_NO</b></td>
+<td><b>NAME</b></td>
+<td><b>GENDER</b></td>
+<td><b>STATE</b></td>
+<td><b>AGGREGATE</b></td>
+<td><b>COURSE</b></td>
+<td><b>LGA</b></td>
+<td><b>SUBJ1</b></td>
+<td><b>SUBJ1_SCORE</b></td>
+<td><b>SUBJ2</b></td>
+<td><b>SUBJ2_SCORE</b></td>
+<td><b>SUBJ3</b></td>
+<td><b>SUBJ3_SCORE</b></td>
+<td><b>ENG_SCORE</b></td>
+</tr>
+<tr>
+<td>202440202794ef</td>
+<td>ADAMU IBRAHIM</td>
+<td>M</td>
+<td>BAUCHI</td>
+<td>280</td>
+<td>COMPUTER SCIENCE</td>
+<td>BAUCHI</td>
+<td>MATHEMATICS</td>
+<td>75</td>
+<td>PHYSICS</td>
+<td>68</td>
+<td>CHEMISTRY</td>
+<td>72</td>
+<td>65</td>
+</tr>
+<tr>
+<td>202440202795gh</td>
+<td>FATIMA HASSAN</td>
+<td>F</td>
+<td>KANO</td>
+<td>295</td>
+<td>MEDICINE</td>
+<td>KANO MUNICIPAL</td>
+<td>BIOLOGY</td>
+<td>78</td>
+<td>CHEMISTRY</td>
+<td>82</td>
+<td>PHYSICS</td>
+<td>75</td>
+<td>60</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# PostgreSQL Command Line Instructions
+
+# 1. Connect to your database
+psql -U your_username -d your_database_name
+
+# 2. Add the column
+ALTER TABLE applicants ADD COLUMN sponsor_phone VARCHAR(20);
+
+# 3. Verify the column was added
+\d applicants
+
+# 4. Check specific column
+SELECT column_name FROM information_schema.columns WHERE table_name = 'applicants' AND column_name = 'sponsor_phone';
+
+# 5. Exit psql
+\q

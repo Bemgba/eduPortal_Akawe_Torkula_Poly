@@ -1,0 +1,42 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="sidebar sidebar-fixed border-end" id="sidebar">
+    <div class="sidebar-header border-bottom">
+        <div class="sidebar-brand">
+            <img src="assets/img/Akawe.png" alt="atpoly Logo" style="width: 32px; height: auto">
+        </div>
+        <button class="btn-close d-lg-none" type="button" aria-label="Close" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()"></button>
+    </div>
+    <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="init"><div class="simplebar-wrapper" style="margin: -8px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden;"><div class="simplebar-content" style="padding: 8px;">
+                            <%
+                                String dashboardUrl = "/";
+                                try {
+                                    if (user != null && user.getDefaultRole() != null && user.getDefaultRole().getDefaulthome() != null) {
+                                        dashboardUrl = "/" + user.getDefaultRole().getDefaulthome().getAlias();
+                                    }
+                                } catch (Exception e) {
+                                    // Fallback to root if there's any issue accessing the default home
+                                    dashboardUrl = "/";
+                                }
+                            %>
+                            <li class="nav-item"><a class="nav-link" href="<%=dashboardUrl%>">
+                                    <svg class="nav-icon">
+                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
+                                    </svg><span data-coreui-i18n="dashboard">Dashboard</span></a></li>
+
+                            <%=menu%>
+
+
+                            <li class="nav-item mt-auto">
+                                <a class="nav-link" href="/log_out">
+                                    <svg class="nav-icon">
+                                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                                    </svg><span data-coreui-i18n="Logout">Logout</span></a>
+                            </li>
+
+                        </div></div></div></div><div class="simplebar-placeholder" style="width: 255px; height: 750px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div></div>
+    </ul>
+    <div class="sidebar-footer border-top d-none d-lg-flex">
+        <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+    </div>
+</div>

@@ -1,0 +1,215 @@
+<%-- Applicant Dashboard Navigation --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="sidebar sidebar-fixed border-end" id="sidebar">
+    <div class="sidebar-header border-bottom">
+        <div class="sidebar-brand">
+            <img src="assets/img/Akawe.png" alt="atpoly Logo" style="width: 32px; height: auto">
+            <div class="sidebar-brand-full">
+                <h6 class="mb-0">Applicant Portal</h6>
+            </div>
+        </div>
+        <button class="btn-close d-lg-none" type="button" aria-label="Close" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()"></button>
+    </div>
+    
+    <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="init">
+        <div class="simplebar-wrapper" style="margin: -8px;">
+            <div class="simplebar-height-auto-observer-wrapper">
+                <div class="simplebar-height-auto-observer"></div>
+            </div>
+            <div class="simplebar-mask">
+                <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                    <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden;">
+                        <div class="simplebar-content" style="padding: 8px;">
+                            
+                            <!-- Dashboard -->
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/gen_app_dashboard">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
+                                    </svg>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            
+                            <!-- Applications Section -->
+                            <li class="nav-group">
+                                <a class="nav-link nav-group-toggle" href="#">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-folder-open"></use>
+                                    </svg>
+                                    Applications
+                                </a>
+                                <ul class="nav-group-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-coreui-toggle="modal" data-coreui-target="#newapp">
+                                            <svg class="nav-icon">
+                                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-plus"></use>
+                                            </svg>
+                                            Start Fresh Application
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-coreui-toggle="modal" data-coreui-target="#sessions">
+                                            <svg class="nav-icon">
+                                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-list"></use>
+                                            </svg>
+                                            View Statuses
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <!-- Payments Section -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-coreui-toggle="modal" data-coreui-target="#payments">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-credit-card"></use>
+                                    </svg>
+                                    View Payments
+                                </a>
+                            </li>
+                            
+                            <!-- Profile Section -->
+                            <li class="nav-group">
+                                <a class="nav-link nav-group-toggle" href="#">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                                    </svg>
+                                    Profile
+                                </a>
+                                <ul class="nav-group-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/profile_update">
+                                            <svg class="nav-icon">
+                                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+                                            </svg>
+                                            Update Profile
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/view_personal_details">
+                                            <svg class="nav-icon">
+                                                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-address-book"></use>
+                                            </svg>
+                                            View Personal Details
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <!-- O-Level Results -->
+<!--                            <li class="nav-item">
+                                <a class="nav-link" href="/olevelResults">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-education"></use>
+                                    </svg>
+                                    O-Level Results
+                                </a>
+                            </li>-->
+                            
+                            <!-- Divider -->
+                            <li class="nav-divider"></li>
+                           
+                            
+                            <!-- Logout -->
+                            <li class="nav-item mt-auto">
+                                <a class="nav-link" href="/log_out">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-account-logout"></use>
+                                    </svg>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="simplebar-placeholder" style="width: 255px; height: 750px;"></div>
+        </div>
+        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+            <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+        </div>
+        <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+            <div class="simplebar-scrollbar" style="height: 0px; transform: translate3d(0px, 0px, 0px); display: none;"></div>
+        </div>
+    </ul>
+    
+    <div class="sidebar-footer border-top d-none d-lg-flex">
+        <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+    </div>
+</div>
+
+<script>
+function showHelpModal() {
+    // Create help modal if it doesn't exist
+    let helpModal = document.getElementById('helpModal');
+    if (!helpModal) {
+        const helpModalHtml = `
+            <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="helpModalLabel">Help & Support</h5>
+                            <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h6>
+                                    <div class="accordion" id="faqAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-coreui-toggle="collapse" data-coreui-target="#faq1">
+                                                    How do I start a new application?
+                                                </button>
+                                            </h2>
+                                            <div id="faq1" class="accordion-collapse collapse" data-coreui-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    Click on "Start Fresh Application" in the navigation menu to begin a new application process.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-coreui-toggle="collapse" data-coreui-target="#faq2">
+                                                    How do I make payments?
+                                                </button>
+                                            </h2>
+                                            <div id="faq2" class="accordion-collapse collapse" data-coreui-parent="#faqAccordion">
+                                                <div class="accordion-body">
+                                                    Use the "View Payments" section to see payment options and make payments for your applications.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6><i class="fas fa-phone me-2"></i>Contact Information</h6>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p><strong>Admissions Office:</strong></p>
+                                            <p><i class="fas fa-envelope me-2"></i>admissions@atpoly.edu.ng</p>
+                                            <p><i class="fas fa-phone me-2"></i>+234 (0) 123 456 7890</p>
+                                            <p><strong>Technical Support:</strong></p>
+                                            <p><i class="fas fa-envelope me-2"></i>support@atpoly.edu.ng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', helpModalHtml);
+    }
+    
+    // Show the modal
+    const modal = new coreui.Modal(document.getElementById('helpModal'));
+    modal.show();
+}
+</script>
